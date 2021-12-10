@@ -9,6 +9,7 @@ body{
     font-family: "Open Sans", sans-serif;
     color:#444444;
     box-sizing: border-box;
+    overflow: hidden;
     
 }
 html{
@@ -34,8 +35,64 @@ a{text-decoration: none;}
     padding-left: 15px;
 }
 
+/* start loud */
+
+.loud {
+
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+    background-color:rgb(2, 2, 58);
+  
+
+}
+
+/* start animation loud*/
+
+@keyframes loud {
+
+    0%{
+
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+    
+}
+
+/* start animation loud*/
+.loud> i{
+    color:var(--mainColor);
+    font-size:70px;
+    animation: loud .9s linear infinite;
+    
+}
+/* end loud */
+
 
 /*start header */
+
+/* start animation header */
+
+
+@keyframes move {
+
+    0%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+    
+}
+/* end animation header */
 header{
     width:100%;
     z-index: 2;
@@ -51,12 +108,12 @@ header .contener {
  
 }
 
-header .contener> a{
+header .contener>a{
    color: #fff;
     font-size:30px;
 }
 
-header .contener i{display: none;color:#fff;font-size: 30px;}
+header .contener>i{display: none;color:#fff;font-size: 30px;}
 
 header .contener .nav{
     display: flex;
@@ -68,7 +125,7 @@ header .contener .nav{
 
 @media (max-width:1023px) {
     header .contener .nav{display: none;}
-    header .contener i {display: block;}
+    header .contener>i {display: block;}
   
 }
 
@@ -87,10 +144,15 @@ header .contener .nav ul li> a{
     padding : 10px;
     color:rgba(255, 255, 255, 0.7);
     font-weight: bold;
+    font-size: 18px;
 
 }
 
-
+header .contener .nav ul>.drop>a>.fa-caret-down{
+    color:var(--secoundColor);
+    font-size: 20px;
+    margin-right: 3px;
+}
 header .contener .nav ul .drop ul{
     display: none;
     position: absolute;
@@ -164,7 +226,7 @@ header .contener .nav> a:hover{
 
    }
 
-   .menu i{
+   .menu>i{
        color: var(--mainColor);
        font-size: 30px;
        position: absolute;
@@ -655,6 +717,7 @@ justify-content: space-around;
     overflow: hidden;
     position: relative;
    
+   
 }
 
 
@@ -687,9 +750,10 @@ justify-content: space-around;
   
 .portfolio .content .imgs img{
 
-    transition: all .3s ease-in-out ;
+    transition: all .3s linear;
     width:100%;
     height: 100%;
+  
     
     
 }
@@ -1163,19 +1227,6 @@ footer .contener .copy-right{
 /* end scroll-top*/
 
 
-/*animation */
-
-
-@keyframes move {
-
-    0%{
-        transform: translateY(-5px);
-    }
-    100%{
-        transform: translateY(0px);
-    }
-    
-}
 
 /* media */
 @media (min-width : 768px ) {

@@ -5,12 +5,25 @@ function scal(e){
 
 }
 window.onload = function()  {
-    // start hero
-    let header_content = document.querySelectorAll(".st .cont div");
-    header_content.forEach(scal);
+
+
+    // start loud 
+
+    let loud = document.querySelector(".loud");
+    setTimeout(() => {
+        
+        loud.style.display = "none";
+        document.body.style.cssText = "overflow:visible";
+
+         // start hero
+              let header_content = document.querySelectorAll(".st .cont div");
+               header_content.forEach(scal);
+    }, 2000);
+   
 };
 
-
+//var notStart with number section
+let notStart = true;
 
 window.onscroll = function() {
 
@@ -31,44 +44,39 @@ let header = document.querySelector("header");
     
     
     // start number
-/* 
+
     let element = document.querySelectorAll(".number .contener .content .ch");
     let element_perant = document.querySelector(".number .contener .content");
-
     
-    let start =true;
-
     if(window.scrollY >= element_perant.offsetTop -400){
-
-        if(start){
+        if(notStart){
 
             element.forEach(e => {
                 startCount(e);
                
             });
-         
+
+            notStart = false;
+          
         }
-        
-      
-     
-      
-       
+        function startCount(e) {
+
+            let gole = e.children[0].dataset.num;
+            let count = setInterval(() => {
+                
+                e.children[0].textContent++;
+                if(e.children[0].textContent == gole){
+    
+                    clearInterval(count);
+                    
+                }
+            }, 300/gole);
+    
+        } 
     }
-    start = false;
-    console.log(start);
-    function startCount(e) {
-
-        let gole = e.children[0].dataset.num;
-        let count = setInterval(() => {
-            
-            e.children[0].textContent++;
-            if(e.children[0].textContent == gole){
-
-                clearInterval(count);
-            }
-        }, 10);
-
-    } */
+  
+ 
+   
 
     
       
@@ -204,7 +212,7 @@ this.children[1].classList.toggle("block");
 let menu = document.querySelector(".menu");
 let menu_li = document.querySelectorAll(".menu ul>li>a");
 let menu_close = document.querySelector(".menu i");
-let menu_bar  = document.querySelector("header .contener i");
+let menu_bar  = document.querySelector("header .contener>i");
 
 // click menu
 menu_bar.onclick = function() {
@@ -245,7 +253,7 @@ let drop =document.querySelector("header .contener .nav ul .drop");
  document.addEventListener("click", function(e) {
      
    
-    if(e.target.textContent == "dropdoun"){
+    if(e.target.classList.contains("d")){
 
         drop.children[1].classList.toggle("togle");
     }
@@ -295,7 +303,7 @@ ul.forEach(function(e){
         if(!it.classList.contains(data)){
 
 
-            it.children[0].style.cssText = "transform: translate3d(-600px, -600px, -600px)";
+            it.children[0].style.cssText =   "transform: scale(0,0)";
             setTimeout(() => {
                 it.style.cssText = "display:none";
             }, 300);
@@ -307,7 +315,7 @@ ul.forEach(function(e){
             
             it.style.cssText = "display:block";
           setTimeout(() => {
-            it.children[0].style.cssText = "transform: translateZ(0px)";
+            it.children[0].style.cssText = "transform:scale(1,1)";
           }, 100);
            
         }
